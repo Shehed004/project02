@@ -2,9 +2,9 @@ import time
 import requests
 import platform
 
-# ---------------------------------------------------------
+
 # 1. BEEP SOUND ALARM FUNCTION
-# ---------------------------------------------------------
+
 def play_sound_alarm():
     """Triggers an instant beep sound from the computer speaker."""
     system_name = platform.system()
@@ -17,9 +17,9 @@ def play_sound_alarm():
         # For macOS or Linux terminal bell sound
         print("\a")
 
-# ---------------------------------------------------------
+
 # 2. SPACE NEWS MONITORING FUNCTION
-# ---------------------------------------------------------
+
 API_URL = "https://api.spaceflightnewsapi.net/v4/articles/?limit=5"
 seen_articles = set()
 
@@ -39,12 +39,12 @@ def check_space_news():
 
                 # If it's a brand new article, trigger the alarm
                 if article_id not in seen_articles:
-                    print(f"\n🚨 [NEW SPACE NEWS DETECTED!] [{news_site}]")
+                    print(f"\n [NEW SPACE NEWS DETECTED!] [{news_site}]")
                     print(f"Title: {title}")
                     print(f"Link: {url}")
                     
                     # --- SOUND ALERT ---
-                    print("🔊 [ALARM] Beeping sound playing...")
+                    print(" [ALARM] Beeping sound playing...")
                     play_sound_alarm()
                     
                     # Mark the article as seen
@@ -56,12 +56,12 @@ def check_space_news():
     except Exception as e:
         print(f"[Error] An error occurred: {e}")
 
-# ---------------------------------------------------------
+
 # 3. MAIN RUN LOOP (Every day / scheduled interval simulation)
-# ---------------------------------------------------------
+
 if __name__ == "__main__":
-    print("🚀 Space News Alarm System Started.")
-    print("🔊 Testing initial sound alert...")
+    print(" Space News Alarm System Started.")
+    print(" Testing initial sound alert...")
     play_sound_alarm()
     
     # Run an initial check right away
