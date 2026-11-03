@@ -11,10 +11,10 @@ def play_sound_alarm():
     
     if system_name == "Windows":
         import winsound
-        # winsound.Beep(Frequency_Hz, Duration_Milliseconds)
+       
         winsound.Beep(1200, 600)  # 1200 Hz for 600 milliseconds
     else:
-        # For macOS or Linux terminal bell sound
+       
         print("\a")
 
 
@@ -37,17 +37,17 @@ def check_space_news():
                 url = article["url"]
                 news_site = article["news_site"]
 
-                # If it's a brand new article, trigger the alarm
+               
                 if article_id not in seen_articles:
                     print(f"\n [NEW SPACE NEWS DETECTED!] [{news_site}]")
                     print(f"Title: {title}")
                     print(f"Link: {url}")
                     
-                    # --- SOUND ALERT ---
+                   
                     print(" [ALARM] Beeping sound playing...")
                     play_sound_alarm()
                     
-                    # Mark the article as seen
+                   
                     seen_articles.add(article_id)
                     time.sleep(0.5)
         else:
@@ -64,12 +64,10 @@ if __name__ == "__main__":
     print(" Testing initial sound alert...")
     play_sound_alarm()
     
-    # Run an initial check right away
+    
     check_space_news()
     
-    # In a student project, use time.sleep(86400) for 24-hour intervals (every day),
-    # or use Python's 'schedule' library for exact time matching (e.g., every day at 09:00).
     while True:
-        # 86400 seconds = 24 hours (Daily loop)
+       
         time.sleep(86400) 
         check_space_news()
